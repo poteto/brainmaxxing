@@ -4,7 +4,7 @@
 
 Stupid simple persistent memory for Claude Code. A markdown vault that your agent reads at session start and writes to when it learns something. It's also an [Obsidian](https://obsidian.md) vault, so you can browse your agent's memory yourself.
 
-Comes with 16 engineering principles as starter content and four skills that form a learning loop: `reflect` after sessions, `ruminate` over past conversations, `meditate` to audit and prune. Two hooks handle the plumbing: injecting the brain index at startup and rebuilding it when files change.
+Comes with 16 engineering principles as starter content and six skills. Four form a learning loop: `reflect` after sessions, `ruminate` over past conversations, `meditate` to audit and prune. Two support structured work: `plan` for breaking down tasks into phased plans, `review` for principle-grounded code and plan review. Two hooks handle the plumbing: injecting the brain index at startup and rebuilding it when files change.
 
 ```mermaid
 graph LR
@@ -27,7 +27,11 @@ graph LR
 
 **`/ruminate`**: Run this occasionally (weekly, monthly, whenever). It digs through your past Claude Code conversations looking for patterns that `/reflect` missed. Corrections you gave, preferences you repeated, knowledge that never got captured. Good for bootstrapping a brain from an existing conversation history.
 
-You don't need to use all three. `/reflect` alone gets you most of the value.
+**`/plan`**: Run this when you have a medium-to-large task that spans multiple files or has unclear scope. It breaks the work into small, phased plans grounded in your principles and writes them to `brain/plans/`. Planning only — it won't implement anything.
+
+**`/review`**: Run this on code changes or plans. It walks through architecture, code quality, tests, and performance, numbering each issue with severity and tradeoff options. Checks principle compliance and scope discipline.
+
+You don't need to use all of these. `/reflect` alone gets you most of the value.
 
 ## Installation
 
@@ -38,7 +42,7 @@ Tell Claude Code:
 It needs to:
 
 1. Copy `brain/` into the project root (the starter vault)
-2. Copy `.agents/skills/` (brain, reflect, ruminate, meditate)
+2. Copy `.agents/skills/` (brain, reflect, ruminate, meditate, plan, review)
 3. Copy `.claude/hooks/` and merge hook config into `.claude/settings.json`
 4. Append the brain instructions from `CLAUDE.md` into the project's `CLAUDE.md`
 

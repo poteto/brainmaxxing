@@ -18,3 +18,6 @@
 - [[principles/serialize-shared-state-mutations]]
 - [[principles/subtract-before-you-add]]
 - [[principles/prove-it-works]]
+
+## Plans
+- [[plans/index]]
