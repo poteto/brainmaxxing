@@ -17,6 +17,10 @@ graph LR
     F --> E
     G["/ruminate"] --> C
     G -. mines .-> H[conversation history]
+    C -. principles .-> I["/plan"]
+    I -. plans .-> C
+    C -. principles .-> J["/review"]
+    J --> K[accept or revise]
 ```
 
 ## Usage
